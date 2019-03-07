@@ -1,0 +1,18 @@
+---
+version: '3.3'
+networks:
+    jenkins:
+        driver: bridge
+volumes:
+    jenkins-data:
+services:
+    server:
+        container_name: jenkins-server
+        build:
+            context: .
+        volumes:
+            - jenkins-data:/var/jenkins_home
+        networks:
+            - jenkins
+        ports:
+            - 8080:8080
